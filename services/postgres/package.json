@@ -1,0 +1,17 @@
+{
+  "name": "hookedjs-postgres",
+  "version": "0.0.1",
+  "description": "Dockerized postgres for local dev -- not for use for production.",
+  "author": "Brian Dombrowski <bdombro@gmail.com>",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose up --build -d",
+    "dev": "yarn start",
+    "test": "yarn start",
+    "stop": "docker-compose stop",
+    "clean-data": "rm -rf ../postgres/db_data/*",
+    "clean-images": "docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker volume prune -f; rm -rf postgres/db_data/*",
+    "cli": "psql -U postgres -h localhost"
+  }
+}

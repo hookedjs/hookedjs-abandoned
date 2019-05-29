@@ -1,0 +1,57 @@
+{
+  "name": "hookedjs",
+  "author": "Brian Dombrowski <bdombro@gmail.com>",
+  "version": "0.0.1",
+  "license": "ISC",
+  "private": false,
+  "scripts": {
+    "upgrade-hard": "npx ncu -u && yarn && yarn upgrade",
+    "upgrade-hard-all": "lerna run --parallel upgrade-hard",
+    "lerna:bootstrap": "dotenv -- lerna bootstrap",
+    "lerna:build": "lerna run --parallel build",
+    "lerna:start": "lerna run --parallel start",
+    "lerna:dev": "lerna run --parallel dev",
+    "lerna:test": "lerna run --parallel test",
+    "lerna:clean": "lerna run --parallel lerna:clean",
+    "prettier": "prettier ./services/*/src/**/*.ts --write",
+    "lint": "tslint --fix -t stylish -c ./tslint.json -p ./tsconfig.json",
+    "list:users": "dotenv -- ts-node ./tools/list-users.ts"
+  },
+  "engines": {
+    "node": ">12",
+    "npm": ">=9999.0.0",
+    "yarn": ">=1.9.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && tsc -p ./tsconfig.json && yarn lerna:test"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },"prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "lerna": "^3.13.2",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.16.4",
+    "dotenv": "^8.0.0",
+    "dotenv-cli": "^2.0.0",
+    "dotenvi": "^0.5.1",
+    "husky": "^2.2.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.5"
+  }
+}

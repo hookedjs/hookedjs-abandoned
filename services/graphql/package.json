@@ -1,0 +1,83 @@
+{
+  "name": "hookedjs-graphql-warthog",
+  "author": "Brian Dombrowski <bdombro@gmail.com>",
+  "description": "A javascript graphql service using Warthog framework.",
+  "version": "0.0.1",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "upgrade-hard": "npx ncu -u && yarn && yarn upgrade",
+    "bootstrap": "yarn && yarn generate:code && yarn typeorm:cli migration:run",
+    "typeorm:cli": "ts-node ./node_modules/.bin/typeorm ",
+    "db:seed:dev": "dotenv -- ts-node tools/seed.ts",
+    "generate:code": "dotenv -- ts-node tools/generate.ts",
+    "playground:open": "open http://localhost:$(dotenv -p APP_PORT)/graphql",
+    "dev": "dotenv -- ts-node-dev --type-check src/index.ts",
+    "start": "dotenv -- ts-node src/index.ts",
+    "test": "dotenv -- jest --detectOpenHandles --coverage"
+  },
+  "jest": {
+    "transform": {
+      ".ts": "ts-jest"
+    },
+    "testRegex": "\\.test\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "\\.test\\.ts$",
+      "/migrations/"
+    ],
+    "setupFilesAfterEnv": [
+      "./test/setupTests.ts"
+    ]
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=9999.0.0",
+    "yarn": ">=1.9.4"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.16.1",
+    "@types/faker": "^4.1.5",
+    "@types/graphql": "^14.2.0",
+    "@types/graphql-iso-date": "^3.3.1",
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/jest": "^24.0.12",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.13.9",
+    "@types/node-emoji": "^1.8.1",
+    "@types/pg": "^7.4.14",
+    "apollo-server-express": "^2.4.8",
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.2.0",
+    "class-validator": "^0.9.1",
+    "dataloader": "^1.4.0",
+    "dotenv": "^8.0.0",
+    "dotenv-cli": "^2.0.0",
+    "dotenvi": "^0.5.1",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "graphql": "^14.2.1",
+    "graphql-iso-date": "^3.6.1",
+    "jest": "^24.7.1",
+    "jsonwebtoken": "^8.5.1",
+    "lint-staged": "^8.1.6",
+    "lodash": "^4.17.11",
+    "node-emoji": "^1.10.0",
+    "pg": "^7.10.0",
+    "pgtools": "^0.3.0",
+    "prettier": "^1.17.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typeorm": "^0.2.17",
+    "typescript": "^3.4.5",
+    "warthog": "^1.23.0"
+  }
+}

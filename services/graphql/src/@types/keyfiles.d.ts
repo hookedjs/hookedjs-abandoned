@@ -1,2 +1,2 @@
-declare module "*.pem";
-declare module "*.pub";
+declare module '*.pem';
+declare module '*.pub';

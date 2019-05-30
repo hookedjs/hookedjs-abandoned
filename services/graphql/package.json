@@ -1,5 +1,5 @@
 {
-  "name": "hookedjs-graphql-warthog",
+  "name": "graphql",
   "author": "Brian Dombrowski <bdombro@gmail.com>",
   "description": "A javascript graphql service using Warthog framework.",
   "version": "0.0.1",
@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "upgrade-hard": "npx ncu -u && yarn && yarn upgrade",
-    "bootstrap": "yarn && yarn generate:code && yarn typeorm:cli migration:run",
+    "bootstrap": "yarn generate:code && yarn typeorm:cli migration:run",
     "typeorm:cli": "ts-node ./node_modules/.bin/typeorm ",
     "db:seed:dev": "dotenv -- ts-node tools/seed.ts",
     "generate:code": "dotenv -- ts-node tools/generate.ts",
@@ -29,15 +29,7 @@
       "/node_modules/",
       "\\.test\\.ts$",
       "/migrations/"
-    ],
-    "setupFilesAfterEnv": [
-      "./test/setupTests.ts"
     ]
-  },
-  "engines": {
-    "node": ">=10",
-    "npm": ">=9999.0.0",
-    "yarn": ">=1.9.4"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",

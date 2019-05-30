@@ -46,3 +46,8 @@ tmp
 
 # Generated
 generated/*
+
+# Envs
+.env
+!./.env
+

@@ -18,11 +18,10 @@
     "noImplicitThis": true,
     "noUnusedLocals": false,
     "strict": true,
-    "strictNullChecks": true,
-    "types": ["jest", "isomorphic-fetch", "node"]
+    "strictNullChecks": true
   },
   "include": [
-    "src/**/*"
+    "services/*/src/**/*"
   ],
   "exclude": ["node_modules/**/*", "generated/**/*", "tools/**/*"]
 }

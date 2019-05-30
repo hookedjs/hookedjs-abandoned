@@ -65,6 +65,7 @@ type User implements BaseGraphQLObject {
   version: Int!
   email: String!
   password: String
+  roles: String
   firstName: String
   lastName: String
   status: UserStatus!
@@ -73,6 +74,7 @@ type User implements BaseGraphQLObject {
 input UserCreateInput {
   email: String
   password: String
+  roles: String
   firstName: String
   lastName: String
   status: UserStatus!
@@ -89,6 +91,8 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  roles_ASC
+  roles_DESC
   firstName_ASC
   firstName_DESC
   lastName_ASC
@@ -105,6 +109,7 @@ enum UserStatus {
 input UserUpdateInput {
   email: String
   password: String
+  roles: String
   firstName: String
   lastName: String
   status: UserStatus
@@ -142,6 +147,11 @@ input UserWhereInput {
   password_startsWith: String
   password_endsWith: String
   password_in: [String!]
+  roles_eq: String
+  roles_contains: String
+  roles_startsWith: String
+  roles_endsWith: String
+  roles_in: [String!]
   firstName_eq: String
   firstName_contains: String
   firstName_startsWith: String

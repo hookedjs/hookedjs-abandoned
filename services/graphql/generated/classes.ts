@@ -8,44 +8,47 @@ import {
   ID,
   InputType as TypeGraphQLInputType,
   Int
-} from "type-graphql";
-import { registerEnumType } from "type-graphql";
+} from 'type-graphql';
+import { registerEnumType } from 'type-graphql';
 
 // tslint:disable-next-line:no-var-requires
-const { GraphQLJSONObject } = require("graphql-type-json");
+const { GraphQLJSONObject } = require('graphql-type-json');
 
-import { BaseWhereInput, PaginationArgs } from "warthog";
-import { UserStatus } from "../src/modules/users/user.model";
-import { User } from "../src/modules/users/user.model";
+import { BaseWhereInput, PaginationArgs } from 'warthog';
+import { UserStatus } from '../src/modules/users/user.model';
+import { User } from '../src/modules/users/user.model';
 
 export enum UserOrderByEnum {
-  createdAt_ASC = "createdAt_ASC",
-  createdAt_DESC = "createdAt_DESC",
+  createdAt_ASC = 'createdAt_ASC',
+  createdAt_DESC = 'createdAt_DESC',
 
-  updatedAt_ASC = "updatedAt_ASC",
-  updatedAt_DESC = "updatedAt_DESC",
+  updatedAt_ASC = 'updatedAt_ASC',
+  updatedAt_DESC = 'updatedAt_DESC',
 
-  deletedAt_ASC = "deletedAt_ASC",
-  deletedAt_DESC = "deletedAt_DESC",
+  deletedAt_ASC = 'deletedAt_ASC',
+  deletedAt_DESC = 'deletedAt_DESC',
 
-  email_ASC = "email_ASC",
-  email_DESC = "email_DESC",
+  email_ASC = 'email_ASC',
+  email_DESC = 'email_DESC',
 
-  password_ASC = "password_ASC",
-  password_DESC = "password_DESC",
+  password_ASC = 'password_ASC',
+  password_DESC = 'password_DESC',
 
-  firstName_ASC = "firstName_ASC",
-  firstName_DESC = "firstName_DESC",
+  roles_ASC = 'roles_ASC',
+  roles_DESC = 'roles_DESC',
 
-  lastName_ASC = "lastName_ASC",
-  lastName_DESC = "lastName_DESC",
+  firstName_ASC = 'firstName_ASC',
+  firstName_DESC = 'firstName_DESC',
 
-  status_ASC = "status_ASC",
-  status_DESC = "status_DESC"
+  lastName_ASC = 'lastName_ASC',
+  lastName_DESC = 'lastName_DESC',
+
+  status_ASC = 'status_ASC',
+  status_DESC = 'status_DESC'
 }
 
 registerEnumType(UserOrderByEnum, {
-  name: "UserOrderByInput"
+  name: 'UserOrderByInput'
 });
 
 @TypeGraphQLInputType()
@@ -79,6 +82,21 @@ export class UserWhereInput extends BaseWhereInput {
 
   @TypeGraphQLField(type => [String], { nullable: true })
   password_in?: string[];
+
+  @TypeGraphQLField({ nullable: true })
+  roles_eq?: string;
+
+  @TypeGraphQLField({ nullable: true })
+  roles_contains?: string;
+
+  @TypeGraphQLField({ nullable: true })
+  roles_startsWith?: string;
+
+  @TypeGraphQLField({ nullable: true })
+  roles_endsWith?: string;
+
+  @TypeGraphQLField(type => [String], { nullable: true })
+  roles_in?: string[];
 
   @TypeGraphQLField({ nullable: true })
   firstName_eq?: string;
@@ -135,6 +153,9 @@ export class UserCreateInput {
   password?: string;
 
   @TypeGraphQLField({ nullable: true })
+  roles?: string;
+
+  @TypeGraphQLField({ nullable: true })
   firstName?: string;
 
   @TypeGraphQLField({ nullable: true })
@@ -151,6 +172,9 @@ export class UserUpdateInput {
 
   @TypeGraphQLField({ nullable: true })
   password?: string;
+
+  @TypeGraphQLField({ nullable: true })
+  roles?: string;
 
   @TypeGraphQLField({ nullable: true })
   firstName?: string;

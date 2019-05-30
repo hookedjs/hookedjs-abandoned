@@ -1,10 +1,12 @@
 import { Request } from 'express';
-import {decode, verify} from "jsonwebtoken";
+import { readFileSync } from 'fs';
+import { decode, verify } from 'jsonwebtoken';
 import 'reflect-metadata';
 import { DefaultNamingStrategy } from 'typeorm';
 import { BaseContext, Server } from 'warthog';
-import PublicKey from "../generated/public.pem";
-import { AuthChecker } from "./modules/users/AuthChecker";
+// import { AuthChecker } from "./modules/users/AuthChecker";
+
+const PublicKey = readFileSync(__dirname + '/../generated/public.pem');
 
 type ContextUser = {
   id: string;
@@ -21,18 +23,18 @@ export function getServer(AppOptions = {}) {
       introspection: true,
       openPlayground: false,
       warthogImportPath: 'warthog',
-      authChecker: AuthChecker,
-      context: (request: Request) => {
-        // Parse the JWT from the headers
-        const token = request.cookies.jwt;
-        // TODO: Restrict alg types after confirmed working
-        // return (verify(token, Secret, {algorithms: ['RS256']}))
-        if (verify(token, PublicKey)) {
-          const payload = decode(token, { json: true })! as {user: ContextUser};
-          return payload.user;
-        }
-        else { return {} }
-      },
+      // authChecker: AuthChecker,
+      // context: (request: Request) => {
+      //   // Parse the JWT from the headers
+      //   const token = request.cookies.jwt;
+      //   // TODO: Restrict alg types after confirmed working
+      //   // return (verify(token, Secret, {algorithms: ['RS256']}))
+      //   if (verify(token, PublicKey)) {
+      //     const payload = decode(token, { json: true })! as {user: ContextUser};
+      //     return payload.user;
+      //   }
+      //   else { return {} }
+      // },
       ...AppOptions
     },
     {

@@ -11,9 +11,9 @@ services:
       - 5432:5432
     # To set password, use, etc. Default is u/p/db: postgres/none/postgres
     environment:
-      POSTGRES_DB: $TYPEORM_DATABASE
-      POSTGRES_PASSWORD: $TYPEORM_PASSWORD
-      POSTGRES_USER: $TYPEORM_USERNAME
+      POSTGRES_DB: $PG_DATABASE
+      POSTGRES_PASSWORD: $PG_PASSWORD
+      POSTGRES_USER: $PG_USERNAME
 
   # Adminer is a lightweight db browser
   # To login, use hostname = postgres and creds above
@@ -36,7 +36,7 @@ services:
       - "5555:5555"
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: $TYPEORM_PASSWORD
+      PGADMIN_DEFAULT_PASSWORD: $PG_PASSWORD
       PGADMIN_LISTEN_PORT: 5555
     restart: unless-stopped
 

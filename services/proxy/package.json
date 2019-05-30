@@ -1,0 +1,21 @@
+{
+  "name": "proxy",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Brian Dombrowski <bdombro@gmail.com>",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev src/index.ts",
+    "test": "yarn start"
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.48",
+    "koa": "^2.7.0",
+    "koa-proxy": "^1.0.0-alpha.0",
+    "ts-node": "^8.1.0",
+    "ts-node-dev": "^1.0.0-pre.39",
+    "typescript": "3.4.5"
+  }
+}

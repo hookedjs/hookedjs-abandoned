@@ -1,11 +1,9 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "noEmit": true,
     "lib": ["dom", "es5", "es6", "es7", "esnext", "esnext.asynciterable"],
-    "target": "es2017",
-    "moduleResolution": "node",
-    "rootDir": "./src"
+//    "rootDir": "./src",
+    "typeRoots" : ["./node_modules/@types", "./src/@types"]
   },
   "exclude": ["node_modules/**/*", "generated/**/*", "tools/**/*"]
 }

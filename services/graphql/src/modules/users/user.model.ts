@@ -40,5 +40,4 @@ export class User extends BaseModel {
       this.password = hashSync(this.password, 8);
     }
   }
-
 }

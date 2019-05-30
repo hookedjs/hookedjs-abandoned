@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8080:8080
+      - 8081:8081
 
   # PGAdmin is a heavyweight postgres browser
   # To login, use the creds below

@@ -42,6 +42,7 @@ beforeAll(async done => {
 
 afterAll(async done => {
   (console.error as any).mockRestore();
+  // binding.mutation.deleteUser(testUser);
   await server.stop();
   done();
 });

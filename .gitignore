@@ -45,7 +45,7 @@ tmp
 .audit.json
 
 # Generated
-generated/*
+generated
 
 # Envs
 .env

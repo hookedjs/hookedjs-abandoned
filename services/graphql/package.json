@@ -2,7 +2,7 @@
   "name": "graphql",
   "author": "Brian Dombrowski <bdombro@gmail.com>",
   "description": "A javascript graphql service using Warthog framework.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "ISC",
   "private": true,
   "scripts": {

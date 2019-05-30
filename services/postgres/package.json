@@ -1,6 +1,6 @@
 {
   "name": "postgres",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dockerized postgres for local dev -- not for use for production.",
   "author": "Brian Dombrowski <bdombro@gmail.com>",
   "license": "ISC",

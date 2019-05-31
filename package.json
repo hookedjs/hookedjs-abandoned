@@ -1,9 +1,9 @@
 {
   "name": "hookedjs",
   "author": "Brian Dombrowski <bdombro@gmail.com>",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "ISC",
-  "private": false,
+  "private": true,
   "scripts": {
     "update:hard": "npx ncu -u && yarn && yarn upgrade",
     "update:hard-all": "lerna run --parallel upgrade-hard",

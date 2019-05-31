@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8081:8081
+      - 8090:8080
 
   # PGAdmin is a heavyweight postgres browser
   # To login, use the creds below
@@ -33,11 +33,11 @@ services:
     depends_on:
       - postgres
     ports:
-      - "5555:5555"
+      - 8091:5555
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: $PG_PASSWORD
-      PGADMIN_LISTEN_PORT: 5555
+      PGADMIN_LISTEN_PORT: 8091
     restart: unless-stopped
 
 

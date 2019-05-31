@@ -69,7 +69,6 @@
     "ts-node-dev": "^1.0.0-pre.32",
     "typeorm": "^0.2.17",
     "typescript": "3.4.5",
-    "wait-port": "^0.2.2",
     "warthog": "^1.23.0"
   }
 }

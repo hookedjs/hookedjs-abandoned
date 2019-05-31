@@ -66,4 +66,4 @@ shell before calling `yarn bootstrap` or `yarn env:sync`
 - [ ] Implement todos UX
 - [ ] Make GraphQL comms typesafe
 - [x] Install React Native standard
-- [ ] Install React Native version Expo.
+- [x] Install React Native version Expo.

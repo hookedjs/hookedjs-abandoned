@@ -12,8 +12,12 @@ setInterval(() => {
   client
     .connect()
     .then(() => {
-      console.log('Postgres is ready!');
-      process.exit();
+      // Success! Wait 10 seconds to ensure that if it restarts, which
+      // it often does once on build, we'll continue after it restarts.
+      setTimeout(() => {
+        console.log('Postgres is ready!');
+        process.exit();
+      }, 10000);
     })
     .catch(() => null);
 }, 200);

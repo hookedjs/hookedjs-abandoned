@@ -1,7 +1,7 @@
 {
   "name": "hookedjs",
   "author": "Brian Dombrowski <bdombro@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "ISC",
   "private": false,
   "scripts": {

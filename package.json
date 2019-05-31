@@ -5,10 +5,10 @@
   "license": "ISC",
   "private": false,
   "scripts": {
-    "upgrade-hard": "npx ncu -u && yarn && yarn upgrade",
-    "upgrade-hard-all": "lerna run --parallel upgrade-hard",
-    "sync-env": "cp -f .env services/postgres/; cp -f .env services/graphql/",
-    "bootstrap": "lerna bootstrap && yarn sync-env && lerna run --scope *postgres start && echo '...waiting 30s for postgres' && sleep 30 && lerna run --parallel --ignore hookedjs bootstrap",
+    "update:hard": "npx ncu -u && yarn && yarn upgrade",
+    "update:hard-all": "lerna run --parallel upgrade-hard",
+    "env:sync": "cp .env.default .env && (set -o posix ; set) >> .env",
+    "bootstrap": "lerna bootstrap && yarn env:sync && lerna run --scope *postgres start && echo '...waiting 30s for postgres' && sleep 30 && lerna run --parallel --ignore hookedjs bootstrap",
     "build": "lerna run --parallel --ignore hookedjs build",
     "start": "lerna run --parallel --ignore hookedjs start",
     "dev": "lerna run --parallel --ignore hookedjs dev",
@@ -24,7 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn lerna:test"
+      "pre-commit": "lint-staged && yarn test"
     }
   },
   "lint-staged": {

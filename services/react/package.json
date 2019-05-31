@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "postbuild": "gzipper --brotli build && gzipper build",
     "start": "ts-node -P tsconfig.server.json src/Server.ts",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
     "clean": "rimraf build"
   },

@@ -7,8 +7,7 @@
   "scripts": {
     "update:hard": "npx ncu -u && yarn && yarn upgrade",
     "update:hard-all": "lerna run --parallel upgrade-hard",
-    "env:sync": "cp .env.default .env && (set -o posix ; set) >> .env",
-    "bootstrap": "lerna bootstrap && yarn env:sync && lerna run --scope *postgres start && echo '...waiting 30s for postgres' && sleep 30 && lerna run --parallel --ignore hookedjs bootstrap",
+    "bootstrap": "lerna bootstrap && lerna run --parallel --ignore hookedjs bootstrap",
     "build": "lerna run --parallel --ignore hookedjs build",
     "start": "lerna run --parallel --ignore hookedjs start",
     "dev": "lerna run --parallel --ignore hookedjs dev",

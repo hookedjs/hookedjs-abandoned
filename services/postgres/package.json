@@ -6,12 +6,17 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "docker-compose up --build -d",
+    "bootstrap": "yarn clean && bash tools/env-setup.sh && yarn start",
+    "start": "docker-compose up -d",
     "dev": "yarn start",
     "test": "yarn start",
     "stop": "docker-compose stop",
-    "clean": "yarn stop && rm -rf db_data/*",
-    "clean-docker": "docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker volume prune -f; yarn clean-data",
-    "cli": "psql -U postgres -h localhost"
+    "clean": "yarn stop && rimraf db_data .env",
+    "clean-docker": "docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker volume prune -f; yarn clean",
+    "cli": "psql -U $(dotenv -p PG_USERNAME) -h $(dotenv -p PG_CONNECTION)"
+  },
+  "dependencies": {
+    "dotenv-cli": "^2.0.0",
+    "rimraf": "^2.6.3"
   }
 }

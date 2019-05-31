@@ -4,15 +4,20 @@ Is a Full-Stack typescript+graphql+passport+react framework.
 
 ## Install
 
-Step 1: Install homebrew
-Step 2: Install nvm
-Step 3: Install Docker
+1. Install homebrew
+2. Install nvm
+3. Install Docker
+4. Install Xcode
 
 Then, 
 
 ```
 brew install gnu-sed
 brew install postgres
+brew install node
+brew install watchman
+brew tap AdoptOpenJDK/openjdk
+brew cask install adoptopenjdk8
 nvm install 12
 nvm use 12
 npm i -g solidarity webpack typescript yarn

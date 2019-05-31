@@ -7,8 +7,7 @@
   "private": true,
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "ts-node-dev src/index.ts",
-    "test": "yarn start"
+    "dev": "ts-node-dev src/index.ts"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",

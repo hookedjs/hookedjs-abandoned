@@ -8,7 +8,7 @@ services:
     volumes:
       - ./db_data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - $PG_PORT:5432
     # To set password, use, etc. Default is u/p/db: postgres/none/postgres
     environment:
       POSTGRES_DB: $PG_DATABASE
@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8090:8080
+      - $PG_ADMINER_PORT:8080
 
   # PGAdmin is a heavyweight postgres browser
   # To login, use the creds below
@@ -33,11 +33,11 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8091:5555
+      - $PG_ADMIN4_PORT:5555
     environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_EMAIL: $PG_ADMIN4_EMAIL
       PGADMIN_DEFAULT_PASSWORD: $PG_PASSWORD
-      PGADMIN_LISTEN_PORT: 8091
+      PGADMIN_LISTEN_PORT: $$PG_ADMIN4_PORT
     restart: unless-stopped
 
 

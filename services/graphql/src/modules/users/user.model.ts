@@ -1,4 +1,4 @@
-import { hashSync } from 'bcryptjs';
+import { compareSync, hashSync } from 'bcryptjs';
 import { BeforeInsert, BeforeUpdate } from 'typeorm';
 import { BaseModel, EmailField, EnumField, Model, StringField } from 'warthog';
 
@@ -22,6 +22,30 @@ export class User extends BaseModel {
   @StringField({ maxLength: 72, minLength: 8, nullable: true })
   password?: string;
 
+  @StringField({ nullable: true })
+  facebookId?: string;
+
+  @StringField({ nullable: true })
+  facebookToken?: string;
+
+  @StringField({ nullable: true })
+  twitterId?: string;
+
+  @StringField({ nullable: true })
+  twitterToken?: string;
+
+  @StringField({ nullable: true })
+  twitterUsername?: string;
+
+  @StringField({ nullable: true })
+  googleId?: string;
+
+  @StringField({ nullable: true })
+  googleToken?: string;
+
+  @StringField({ nullable: true })
+  photo?: string;
+
   @StringField({ maxLength: 60, nullable: true })
   roles?: string;
 
@@ -33,11 +57,16 @@ export class User extends BaseModel {
 
   @EnumField('UserStatus', UserStatus)
   status?: UserStatus;
+
   @BeforeInsert()
   @BeforeUpdate()
   hashPassword() {
     if (this.password) {
       this.password = hashSync(this.password, 8);
     }
+  }
+
+  validPassword(password: string) {
+    return this.password && compareSync(password, this.password);
   }
 }

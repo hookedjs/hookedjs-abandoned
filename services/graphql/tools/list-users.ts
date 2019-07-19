@@ -2,12 +2,15 @@ import 'reflect-metadata';
 
 import { Container } from 'typedi';
 
+import { createConnection } from 'typeorm';
 import { Binding } from '../generated/binding';
 import { getServer } from '../src/server';
 
 async function bootstrap() {
+  // const connection = await createConnection();
+  // Container.get(connection);
   const app = getServer({ container: Container });
-  await app.start();
+  // await app.start();
 
   // Note: this binding is type-safe from your generated API.
   // i.e. you can dot into your API:  binding.query.us___ and it will autofill
@@ -20,7 +23,7 @@ async function bootstrap() {
 
   console.log('users', users);
 
-  app.stop();
+  // app.stop();
 }
 
 bootstrap().catch((error: Error) => {

@@ -5,16 +5,15 @@ const app = new Koa();
 
 const server = http.createServer(app.callback());
 
-app.use(
-  Proxy({
-    host: `http://localhost:4100`,
-    match: /^\/graphql/
-  })
-);
-console.log('Proxying graphql to 4100');
+app.use(Proxy({ host: process.env.APP_URL, match: /^\/graphql/ }));
+console.log(`Proxying /graphql to ${process.env.APP_URL}`);
 
-app.use(Proxy({ host: `http://localhost:3000` }));
-console.log('Proxying default to 3000');
+app.use(Proxy({ host: process.env.AUTH_URL, match: /^\/auth/ }));
+console.log(`Proxying /auth to ${process.env.AUTH_URL}`);
 
-server.listen(8080);
-console.log('Listening on port 8080');
+app.use(Proxy({ host: process.env.REACT_URL }));
+console.log(`Proxying / to ${process.env.REACT_URL}`);
+
+const port = process.env.PROXY_PORT;
+server.listen(port);
+console.log('Listening on port ' + port);

@@ -6,15 +6,16 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "ts-node-dev src/index.ts"
+    "start": "dotenv -- ts-node src/index.ts",
+    "dev": "dotenv -- ts-node-dev src/index.ts"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
+    "dotenv-cli": "^2.0.1",
     "koa": "^2.7.0",
     "koa-proxy": "^1.0.0-alpha.0",
-    "ts-node": "^8.1.0",
-    "ts-node-dev": "^1.0.0-pre.39",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
     "typescript": "3.4.5"
   }
 }

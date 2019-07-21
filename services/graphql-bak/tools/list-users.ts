@@ -1,35 +1,36 @@
 import 'reflect-metadata';
 
+import { Container } from 'typedi';
+
+import { createConnection } from 'typeorm';
 import { Binding } from '../generated/binding';
-import { loadConfig } from '../src/config';
-import { Logger } from '../src/logger';
 import { getServer } from '../src/server';
 
 async function bootstrap() {
-  loadConfig();
-
-  const server = getServer({ introspection: true, openPlayground: false }, { logging: false });
-  // await server.start();
+  // const connection = await createConnection();
+  // Container.get(connection);
+  const app = getServer({ container: Container });
+  // await app.start();
 
   // Note: this binding is type-safe from your generated API.
   // i.e. you can dot into your API:  binding.query.us___ and it will autofill
-  const binding = ((await server.getBinding()) as unknown) as Binding;
+  const binding = ((await app.getBinding()) as unknown) as Binding; // tslint:disable-line
 
   const users = await binding.query.users(
     { limit: 5, orderBy: 'createdAt_DESC' },
     `{ id firstName email}`
   );
 
-  Logger.info('users', users);
+  console.log('users', users);
 
-  // server.stop();
+  // app.stop();
 }
 
 bootstrap().catch((error: Error) => {
-  Logger.info('Caught Error!!!');
-  Logger.error(error);
+  console.log('Caught Error!!!');
+  console.error(error);
   if (error.stack) {
-    Logger.error(error.stack.split('\n').slice(0, 20));
+    console.error(error.stack!.split('\n').slice(0, 20));
   }
   process.exit(1);
 });

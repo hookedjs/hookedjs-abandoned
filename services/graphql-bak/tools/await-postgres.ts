@@ -19,8 +19,5 @@ setInterval(() => {
         process.exit();
       }, 10000);
     })
-    .catch(e => {
-      console.log('await-postgres: something went wrong.');
-      console.dir(e);
-    });
+    .catch(() => null);
 }, 200);

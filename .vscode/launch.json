@@ -1,0 +1,58 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "TS-Node (index)",
+      "type": "node",
+      "request": "launch",
+      "args": ["src/index.ts"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "env": {
+        "WARTHOG_MOCK_DATABASE": "true"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Tests",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": ["--config", "package.json", "--runInBand"],
+      "runtimeArgs": ["--nolazy"],
+      "console": "internalConsole",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Warthog CLI",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/node_modules/.bin/warthog",
+      "args": ["codegen", "--compiled-build"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      // "runtimeArgs": ["--nolazy"],
+      "console": "internalConsole",
+      "env": {
+        // "NODE_ENV": "test"
+      }
+    },
+    {
+      "name": "ts-node",
+      "type": "node",
+      "request": "launch",
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "env": {
+        "TS_NODE_IGNORE": "false",
+        "DEBUG": "*"
+      }
+    }
+  ]
+}

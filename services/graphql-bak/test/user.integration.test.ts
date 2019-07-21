@@ -1,42 +1,40 @@
-/* eslint-disable no-console */
-
-import 'reflect-metadata';
-
 // This is an integration test that uses a graphql-binding to test the APIs by issuing
 // calls to the actual server. We should determine how we want to distinguish between the
 // different types of tests.
 import { GraphQLError } from 'graphql';
+import { Container } from 'typedi';
 
 // TODO: If we create an integration test harness, we could make app a global and also load dotenv as part of the setup.
 // Needs to happen before you import any models
-import { Binding } from '../generated/binding';
-import { loadConfig } from '../src/config';
-import { Logger } from '../src/logger';
-import { UserStatus } from '../src/models';
 import { getServer } from '../src/server';
+// const server = getServer({mockDBConnection: true});
+const server = getServer();
+
+import { Binding } from '../generated/binding';
+import { User, UserStatus } from '../src/modules/users/user.model';
 
 let binding: Binding;
 let testUser: any;
 const key = new Date().getTime().toString();
 
-let server: any;
-
 beforeAll(async done => {
-  loadConfig();
-
   // TODO: this masks errors when they happen, we should figure out how to spy and call through
   console.error = jest.fn();
 
-  server = getServer({ mockDBConnection: true }, { logging: false });
-  await server.start();
+  try {
+    console.log('start');
+    await server.start();
+    console.log('started');
+  } catch (error) {
+    throw new Error(error);
+  }
 
   binding = ((await server.getBinding()) as unknown) as Binding; // TODO: clean this up
 
   try {
     testUser = await createTestUser();
   } catch (error) {
-    Logger.logGraphQLError(error);
-    process.exit(1);
+    throw new Error(error);
   }
 
   done();
@@ -44,12 +42,14 @@ beforeAll(async done => {
 
 afterAll(async done => {
   (console.error as any).mockRestore();
+  // binding.mutation.deleteUser(testUser);
   await server.stop();
   done();
 });
 
 describe('Users', () => {
   test('find user by id', async done => {
+    console.log('find user by id');
     expect(testUser).toBeTruthy();
 
     const user = await binding.query.user({ where: { id: String(testUser.id) } }, `{ id }`);
@@ -63,6 +63,7 @@ describe('Users', () => {
   });
 
   test('createdAt sort', async done => {
+    console.log('createdAt sort');
     const users = await binding.query.users(
       { limit: 1, orderBy: 'createdAt_DESC' },
       `{ id firstName}`
@@ -76,6 +77,7 @@ describe('Users', () => {
   });
 
   test('uniqueness failure', async done => {
+    console.log('uniqueness failure');
     let error: GraphQLError = new GraphQLError('');
     try {
       await createTestUser();
@@ -84,8 +86,7 @@ describe('Users', () => {
     }
     // Note: this test can also surface if you have 2 separate versions of GraphQL installed (which is bad)
     expect(error).toBeInstanceOf(GraphQLError);
-    expect(error.message).toContain('constraint');
-
+    expect(error.message).toContain('duplicate');
     done();
   });
 });
@@ -103,5 +104,3 @@ async function createTestUser() {
     `{ id email firstName lastName status }`
   );
 }
-
-/* eslint-enable no-console */

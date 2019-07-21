@@ -6,71 +6,70 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "upgrade-hard": "npx ncu -u && yarn && yarn upgrade",
-    "bootstrap": "dotenv -- ts-node tools/await-postgres.ts && yarn generate:code && yarn typeorm:cli migration:run",
-    "typeorm:cli": "ts-node ./node_modules/.bin/typeorm ",
-    "db:seed:dev": "dotenv -- ts-node tools/seed.ts",
-    "generate:code": "dotenv -- ts-node tools/generate.ts",
-    "playground:open": "open http://localhost:$(dotenv -p APP_PORT)/graphql",
-    "dev": "dotenv -- ts-node-dev --type-check src/index.ts",
-    "start": "dotenv -- ts-node src/index.ts",
-    "test": "dotenv -- jest --detectOpenHandles --coverage"
-  },
-  "jest": {
-    "transform": {
-      ".ts": "ts-jest"
-    },
-    "testRegex": "\\.test\\.ts$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "\\.test\\.ts$",
-      "/migrations/"
-    ]
+    "update:hard": "npx ncu -u && yarn && yarn upgrade",
+    "bootstrap": "yarn codegen",
+    "clean": "yarn db:drop && rm -rf ./node_modules ./generated",
+    "codegen": "warthog codegen && rm warthog.sqlite.tmp",
+    "db:create": "warthog db:create",
+    "db:drop": "warthog db:drop",
+    "db:migrate:generate": "warthog db:migrate:generate --name",
+    "db:migrate": "warthog db:migrate",
+    "db:seed": "ts-node tools/seed.ts",
+    "list:users": "ts-node ./tools/list-users.ts",
+    "playground": "warthog playground",
+    "start": "yarn start:prod",
+    "start:dev": "ts-node-dev --type-check src/index.ts",
+    "start:prod": "WARTHOG_ENV=production yarn dotenv:generate && ts-node src/index.ts",
+    "test": "jest --verbose --coverage"
   },
   "dependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/express": "^4.16.1",
+    "@types/dotenv": "^6.1.1",
     "@types/faker": "^4.1.5",
-    "@types/graphql": "^14.2.0",
-    "@types/graphql-iso-date": "^3.3.1",
-    "@types/isomorphic-fetch": "^0.0.35",
-    "@types/jest": "^24.0.12",
-    "@types/jsonwebtoken": "^8.3.2",
-    "@types/lodash": "^4.14.123",
-    "@types/node": "^11.13.9",
-    "@types/node-emoji": "^1.8.1",
-    "apollo-server-express": "^2.4.8",
-    "bcryptjs": "^2.4.3",
-    "class-transformer": "^0.2.0",
-    "class-validator": "^0.9.1",
-    "dataloader": "^1.4.0",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.10",
+    "@types/sqlite3": "^3.1.5",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "bcrypt-node": "^0.1.0",
     "dotenv": "^8.0.0",
-    "dotenv-cli": "^2.0.1",
+    "dotenv-cli": "^2.0.0",
     "dotenvi": "^0.6.0",
-    "express": "^4.16.4",
     "faker": "^4.1.0",
-    "graphql": "^14.2.1",
-    "graphql-iso-date": "^3.6.1",
-    "jest": "^24.7.1",
-    "jsonwebtoken": "^8.5.1",
-    "lint-staged": "^8.1.6",
-    "lodash": "^4.17.11",
-    "node-emoji": "^1.10.0",
-    "pg": "^7.11.0",
-    "pgtools": "^0.3.0",
-    "prettier": "^1.17.0",
+    "jest": "^24.8.0",
     "reflect-metadata": "^0.1.13",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.40",
     "typeorm": "^0.2.18",
-    "typeorm-typedi-extensions": "^0.2.3",
     "typescript": "3.4.5",
-    "validator": "^11.1.0",
-    "warthog": "1.23.2"
+    "warthog": "1.35.0"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "transform": {
+      ".ts": "ts-jest"
+    },
+    "testRegex": "\\.test\\.ts$",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "\\.test\\.ts$"
+    ],
+    "globalSetup": "<rootDir>/test/globalSetup.ts",
+    "globalTeardown": "<rootDir>/test/globalTeardown.ts",
+    "setupFilesAfterEnv": [
+      "./test/setupFilesAfterEnv.ts"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
   }
 }

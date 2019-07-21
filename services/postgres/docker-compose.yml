@@ -37,7 +37,7 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: $PG_ADMIN4_EMAIL
       PGADMIN_DEFAULT_PASSWORD: $PG_PASSWORD
-      PGADMIN_LISTEN_PORT: $$PG_ADMIN4_PORT
+      PGADMIN_LISTEN_PORT: $PG_ADMIN4_PORT
     restart: unless-stopped
 
 

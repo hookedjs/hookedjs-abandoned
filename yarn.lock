@@ -772,13 +772,6 @@
   resolved "https://registry.yarnpkg.com/@types/argparse/-/argparse-1.0.36.tgz#9720632ec67f4e48f75c5956107c07f899765842"
   integrity sha512-3+i1qzPwyNjbJeiZuJQuETdAe7kWsbI+Vrpj8kbdqAEsXaBDxHPEPg6tXGeDEP0DDPrOnvyFJjm6XNOoK6685w==
 
-"@types/aws-sdk@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@types/aws-sdk/-/aws-sdk-2.7.0.tgz#83588b3d14ebdca1d4ce5e023387577568ce82f3"
-  integrity sha1-g1iLPRTr3KHUzl4CM4dXdWjOgvM=
-  dependencies:
-    aws-sdk "*"
-
 "@types/bluebird@^3.5.20":
   version "3.5.27"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
@@ -992,7 +985,7 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@*, aws-sdk@^2.171.0, aws-sdk@^2.224.1:
+aws-sdk@^2.171.0, aws-sdk@^2.224.1:
   version "2.464.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.464.0.tgz#1415ba026f5ca76ad32fce79d99131246d37cd6f"
   integrity sha512-DsJ/V/Eaazio5klO49IXIgnDpBcObgOunFs0KsUbdPz5yxvznZQiez9LqTcaj0SaCS7zsrT9K5p+Jtbt60z1SA==
@@ -1771,13 +1764,12 @@ dotenv@^8.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.0.0.tgz#ed310c165b4e8a97bb745b0a9d99c31bda566440"
   integrity sha512-30xVGqjLjiUOArT4+M5q9sYdvuR4riM6yK9wMcas9Vbp6zZa+ocC9dp6QoftuhTPhFAiLK/0C5Ni2nou/Bk8lg==
 
-dotenvi@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/dotenvi/-/dotenvi-0.5.1.tgz#3919e589bf73486de35dba7c03476f23cc551648"
-  integrity sha512-4ZEJp79d1+7d7C8dLmEusKi137C3rvF3UnLW+XV6vxIhXKVXgCrwbmAr9y/sTwGj0ttQdjjYDVkdTr4CFV2hOQ==
+dotenvi@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dotenvi/-/dotenvi-0.6.0.tgz#057473eb5e1a9310f3584e7ee67eeb2504a346ff"
+  integrity sha512-1wI2Ptf1tpleQN6EMJasiXb64SAstGFevLZj66lDo5Kr0Eum+IeQePNOAgrzRfN0QHBgBclFN3xPEzfgGNknbA==
   dependencies:
     "@types/argparse" "^1.0.33"
-    "@types/aws-sdk" "^2.7.0"
     "@types/bluebird" "^3.5.20"
     "@types/js-yaml" "^3.11.1"
     "@types/node" "^9.6.4"
@@ -2008,11 +2000,6 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
-
-find-parent-dir@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/find-parent-dir/-/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
-  integrity sha1-M8RLQpqysvBkYpnF+fcY83b/jVQ=
 
 find-up@^1.0.0:
   version "1.1.2"
@@ -2977,10 +2964,10 @@ libnpmpublish@^1.1.1:
     semver "^5.5.1"
     ssri "^6.0.1"
 
-lint-staged@^8.1.6:
-  version "8.1.7"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-8.1.7.tgz#a8988bc83bdffa97d04adb09dbc0b1f3a58fa6fc"
-  integrity sha512-egT0goFhIFoOGk6rasPngTFh2qDqxZddM0PwI58oi66RxCDcn5uDwxmiasWIF0qGnchHSYVJ8HPRD5LrFo7TKA==
+lint-staged@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-8.2.1.tgz#752fcf222d9d28f323a3b80f1e668f3654ff221f"
+  integrity sha512-n0tDGR/rTCgQNwXnUf/eWIpPNddGWxC32ANTNYsj2k02iZb7Cz5ox2tytwBu+2r0zDXMEMKw7Y9OD/qsav561A==
   dependencies:
     chalk "^2.3.1"
     commander "^2.14.1"
@@ -2989,7 +2976,6 @@ lint-staged@^8.1.6:
     dedent "^0.7.0"
     del "^3.0.0"
     execa "^1.0.0"
-    find-parent-dir "^0.3.0"
     g-status "^2.0.2"
     is-glob "^4.0.0"
     is-windows "^1.0.2"

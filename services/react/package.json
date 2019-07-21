@@ -3,10 +3,10 @@
   "version": "0.0.4",
   "private": true,
   "scripts": {
-    "dev": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "postbuild": "gzipper --brotli build && gzipper build",
     "start": "ts-node -P tsconfig.server.json src/Server.ts",
+    "start:dev": "BROWSER=none react-scripts start",
     "test": "CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
     "clean": "rimraf build"
@@ -27,11 +27,13 @@
     ]
   },
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/jest": "24.0.13",
     "@types/koa": "^2.0.48",
     "@types/node": "12.0.3",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "dotenv": "^8.0.0",
     "gzipper": "^2.6.0",
     "koa": "^2.7.0",
     "koa-static-server": "^1.4.0",

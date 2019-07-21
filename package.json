@@ -7,16 +7,17 @@
   "scripts": {
     "update:hard": "npx ncu -u && yarn && yarn upgrade",
     "update:hard-all": "lerna run --parallel upgrade-hard",
-    "bootstrap": "lerna bootstrap && lerna run --parallel --ignore hookedjs bootstrap",
+    "bootstrap": "lerna bootstrap && yarn dotenv:generate && lerna run --parallel --ignore hookedjs bootstrap",
+    "dotenv:generate": "dotenvi -s ${APP_ENV:-development}",
     "build": "lerna run --parallel --ignore hookedjs build",
     "start": "lerna run --parallel --ignore hookedjs start",
-    "dev": "lerna run --parallel --ignore hookedjs dev",
+    "start:dev": "lerna run --parallel --ignore hookedjs start:dev",
     "test": "lerna run --parallel --ignore hookedjs test",
     "clean": "lerna run --parallel --ignore hookedjs clean",
     "prettier": "prettier ./services/*/src/**/*.ts --write",
     "lint": "tslint --fix -t stylish -c ./tslint.json -p ./tsconfig.json"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "engines": {
     "node": ">12.0.0",
     "npm": ">9999.0.0",
@@ -28,14 +29,19 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{json}": [
-      "prettier --write",
-      "git add"
+    "linters": {
+      "*.ts": [
+        "tslint --fix",
+        "prettier --write",
+        "git add"
+      ],
+      "*.{js,json}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "**/generated/*"
     ]
   },
   "prettier": {
@@ -46,10 +52,10 @@
     "concurrently": "^4.1.0",
     "dotenv": "^8.0.0",
     "dotenv-cli": "^2.0.0",
-    "dotenvi": "^0.5.1",
+    "dotenvi": "^0.6.0",
     "husky": "^2.2.0",
     "lerna": "^3.13.2",
-    "lint-staged": "^8.1.6",
+    "lint-staged": "^8.2.1",
     "prettier": "^1.16.4",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

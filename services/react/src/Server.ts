@@ -7,6 +7,8 @@ import * as http from 'http';
 import * as Koa from 'koa';
 import * as StaticServer from 'koa-static-server';
 
+import 'dotenv/config';
+
 // @ts-ignore: ignore TS2351
 const app = new Koa();
 
@@ -19,5 +21,5 @@ app.use(
   })
 );
 
-server.listen(3000);
-console.log('Listening on port 3000');
+server.listen(process.env.REACT_PORT);
+console.log('Listening on port ' + process.env.REACT_PORT);

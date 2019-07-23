@@ -7,13 +7,13 @@
   "scripts": {
     "update:hard": "npx ncu -u && yarn && yarn upgrade",
     "update:hard-all": "lerna run --parallel upgrade-hard",
-    "bootstrap": "lerna bootstrap && yarn dotenv:generate && lerna run --parallel --ignore hookedjs bootstrap",
-    "dotenv:generate": "dotenvi -s ${APP_ENV:-development}",
-    "build": "lerna run --parallel --ignore hookedjs build",
-    "start": "lerna run --parallel --ignore hookedjs start",
-    "start:dev": "lerna run --parallel --ignore hookedjs start:dev",
-    "test": "lerna run --parallel --ignore hookedjs test",
-    "clean": "lerna run --parallel --ignore hookedjs clean",
+    "bootstrap": "lerna bootstrap && yarn env && lerna run --parallel --ignore hookedjs bootstrap",
+    "env": "dotenvi -s ${APP_ENV:-development}",
+    "build": "yarn env && lerna run --parallel --ignore hookedjs build",
+    "start": "yarn env && lerna run --parallel --ignore hookedjs start",
+    "start:dev": "yarn env && lerna run --parallel --ignore hookedjs start:dev",
+    "test": "yarn env && lerna run --parallel --ignore hookedjs test",
+    "clean": "yarn env && lerna run --parallel --ignore hookedjs clean",
     "prettier": "prettier ./services/*/src/**/*.ts --write",
     "lint": "tslint --fix -t stylish -c ./tslint.json -p ./tsconfig.json"
   },
@@ -48,6 +48,10 @@
     "printWidth": 100,
     "singleQuote": true
   },
+  "peerDependencies": {
+    "prettier": ">1.0.0",
+    "tslint": ">5.0.0"
+  },
   "dependencies": {
     "concurrently": "^4.1.0",
     "dotenv": "^8.0.0",
@@ -59,6 +63,9 @@
     "prettier": "^1.16.4",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
+    "tslint-consistent-codestyle": "^1.14.1",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
     "typescript": "3.4.5",
     "typestrict": "^1.0.2"
   }

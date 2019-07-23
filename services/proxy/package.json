@@ -6,7 +6,8 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "update:hard": "npx ncu -u && yarn && yarn upgrade",
+    "start": "ts-node -T src/index.ts",
     "start:dev": "ts-node-dev src/index.ts"
   },
   "dependencies": {

@@ -1,27 +1,24 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
+    //"target": "es5",
     "module": "esnext",
     "lib": [
       "dom",
-      "es5",
-      "es6",
-      "es7",
-      "esnext",
-      "esnext.asynciterable"
+      "dom.iterable",
+      "esnext"
     ],
-    "typeRoots" : ["./node_modules/@types", "./src/@types"],
+    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "exclude": [
-    "node_modules/**/*",
-    "generated/**/*",
-    "tools/**/*"
+    "node_modules"
   ],
   "include": [
-    "src"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }

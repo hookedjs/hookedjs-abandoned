@@ -25,9 +25,9 @@ brew install node
 brew install watchman
 brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk8
-nvm install 12
-nvm use 12
-npm i -g solidarity webpack typescript yarn
+nvm install 10
+nvm use 10
+npm i -g typescript yarn
 yarn bootstrap
 ```
 
@@ -36,19 +36,12 @@ yarn bootstrap
 A local development env can be launched by (1) starting Docker and (2) running 
 
 ```
-yarn dev
+yarn start:dev
 ```
 
-### Native Apps
+### Testing Native
 
-This does not launch IOS or Android emulators. To launch those, go to services/reactnative and see the package.json run commands.
-
-Tips for Android
-1. ⌘M opens the developer menu in the emulator. From there, enable hot reload.
-1. For Android, You shouldn't have to, but you may need to enable developer mode in Android Emulator
-
-Tips for IOS
-1. ⌘D opens the developer menu in the emulator. From there, enable hot reload.
+This does not launch IOS or Android emulators. To launch those, go to services/react and read that README.md
 
 ## Environmental Variables
 
@@ -63,11 +56,9 @@ shell before calling `yarn bootstrap` or `yarn env:sync`
 ## Beta Punchlist
 
 - [x] Create new architecture in new repo
-- [ ] Get GraphQL working
-- [x] Add react service using create-react-app
-- [ ] Add auth service based on my boilerplate
+- [x] Get GraphQL working
+- [x] Add react service based on 🍰 [EUSY](https://github.com/hookedjs/eusy)
+- [x] Add auth service based on my boilerplate
 - [ ] Implement auth UX
 - [ ] Implement todos UX
 - [ ] Make GraphQL comms typesafe
-- [x] Install React Native standard
-- [x] Install React Native version Expo.

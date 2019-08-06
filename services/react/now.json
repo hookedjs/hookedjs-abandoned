@@ -1,0 +1,12 @@
+{
+  "name": "EUSY",
+  "public": true,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "web-build" }
+    }
+  ],
+  "version": 2
+}

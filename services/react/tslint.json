@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "tslint-etc",
+    "tslint-eslint-rules",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "prettier": true,
+    "no-unused-declaration": {
+      "options": [
+        {
+          "declarations": true,
+          "ignored": {
+            "React": true
+          },
+          "imports": true
+        }
+      ],
+      "severity": "error"
+    }
+  }
+}

@@ -1,6 +1,10 @@
 # HookedJS
 
-Is a Full-Stack typescript+graphql+passport+react framework for Web and Mobile.
+Is a Full-Stack typescript+graphql+passport+react framework for Web, Native and beyond.
+
+## Status
+
+Pre-Release: Currently very unstable, but feel free to browse. 
 
 ## Install
 

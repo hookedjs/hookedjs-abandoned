@@ -1,24 +1,14 @@
 {
-  "extends": "../../tsconfig",
   "compilerOptions": {
-    //"target": "es5",
-    "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "lib": ["dom", "esnext"],
+    "target": "esnext",
+    //    "module": "esnext",
+    "jsx": "react-native",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+    "strict": false
+  }
 }

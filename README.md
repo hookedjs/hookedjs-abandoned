@@ -1,14 +1,14 @@
-# HookedJS
+# 🍰HookedJS
 
-Is a Full-Stack typescript+graphql+passport+react framework for Web, Native and beyond.
+A Scalable Full-Stack in a box: web+native+backend, built with react, graphql, and passport.
 
 ## Status
 
-Pre-Release: Currently very unstable, but feel free to browse. 
+Feature Incomplete: Each microservice is working but they are not yet working together. Current development effort is focused on Eusy, our open-source React framework that will be used as the foundation of HookedJS's React microservice.
 
 ## Install
 
-As of now, MacOS is required in order to develop IOS apps.
+As of now, HookedJS requires MacOS in order to build IOS apps.
 
 1. [Install homebrew](https://brew.sh/)
 2. [Install nvm](https://github.com/nvm-sh/nvm#install--update-script)
@@ -39,9 +39,9 @@ A local development env can be launched by (1) starting Docker and (2) running
 yarn start:dev
 ```
 
-### Testing Native
+### Developing Native Apps
 
-This does not launch IOS or Android emulators. To launch those, go to services/react and read that README.md
+`yarn start:dev` does not start IOS or Android emulators. To start those, go to services/react and read that README.md
 
 ## Environmental Variables
 

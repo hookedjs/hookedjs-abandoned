@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/hookedjs/hookedjs/master/hooked.png" alt="Hookedjs" width="200"/></p>
 
-A Scalable Full-Stack in a box: web+native+backend, built with react, graphql, and passport.
+A Scalable, all NodeJS Full-Stack in a box: web+native+backend. Features bleeding-edge react, graphql, and passport.
 
 ## Status
 

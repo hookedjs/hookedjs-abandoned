@@ -1,4 +1,4 @@
-# 🍰HookedJS
+# 🍰 HookedJS
 
 A Scalable Full-Stack in a box: web+native+backend, built with react, graphql, and passport.
 

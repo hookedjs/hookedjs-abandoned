@@ -61,4 +61,5 @@ shell before calling `yarn bootstrap` or `yarn env:sync`
 - [x] Add auth service based on my boilerplate
 - [ ] Implement auth UX
 - [ ] Implement todos UX
+- [ ] Implement now.json for CI/CD
 - [ ] Make GraphQL comms typesafe

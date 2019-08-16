@@ -6,6 +6,8 @@ Is a Full-Stack typescript+graphql+passport+react framework for Web, Native and 
 
 Pre-Release: Currently very unstable, but feel free to browse. 
 
+Roadmap: https://github.com/orgs/hookedjs/projects/1
+
 ## Install
 
 As of now, MacOS is required in order to develop IOS apps.
@@ -16,7 +18,7 @@ As of now, MacOS is required in order to develop IOS apps.
 1. Install Xcode from the App Store and open it to accept the user agreement.
 2. Follow [the official React Native instructions](https://facebook.github.io/react-native/docs/getting-started.html) to configure your machine for IOS and Android using the "React Native CLI Quickstart" tab, NOT the "Expo CLI Quickstart" tab.
 
-Then, 
+Then, install more dependencies and bootstrap
 
 ```
 brew install gnu-sed
@@ -27,7 +29,7 @@ brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk8
 nvm install 10
 nvm use 10
-npm i -g typescript yarn
+npm i -g typescript@3.4.5 yarn
 yarn bootstrap
 ```
 
@@ -41,7 +43,7 @@ yarn start:dev
 
 ### Testing Native
 
-This does not launch IOS or Android emulators. To launch those, go to services/react and read that README.md
+See services/react/README.md
 
 ## Environmental Variables
 
